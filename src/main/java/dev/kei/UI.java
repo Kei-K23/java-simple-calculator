@@ -6,11 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class UI extends JFrame implements ActionListener {
-    private JPanel panel;
-    private JTextField textField;
-    private JButton[] buttons;
-    private final String[] buttonValues = {"7", "8", "9", "/", "4", "5", "6", "*", "1", "2", "3", "-", "C", "0", "=", "+"};
-    private final Font buttonFont = new Font("Arial", Font.PLAIN, 18);
+    private final JTextField textField;
     private double firstNumber = 0;
     private String operator = "";
     private final Calculator calculator = new Calculator(UI.this);
@@ -20,7 +16,7 @@ public class UI extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
 
-        panel = new JPanel(new GridBagLayout());
+        JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
 
@@ -32,13 +28,15 @@ public class UI extends JFrame implements ActionListener {
         gbc.gridwidth = 4;
         panel.add(textField, gbc);
 
-        buttons = new JButton[buttonValues.length];
+        String[] buttonValues = {"7", "8", "9", "/", "4", "5", "6", "*", "1", "2", "3", "-", "C", "0", "=", "+"};
+        JButton[] buttons = new JButton[buttonValues.length];
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.BOTH;
         int index = 0;
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 buttons[index] = new JButton(buttonValues[index]);
+                Font buttonFont = new Font("Arial", Font.PLAIN, 18);
                 buttons[index].setFont(buttonFont);
                 gbc.gridx = j;
                 gbc.gridy = i + 1;
