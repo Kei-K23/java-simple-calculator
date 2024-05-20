@@ -8,7 +8,10 @@ import java.io.InputStream;
 
 public class BufferedImageCustom {
     public Image imageReturn() throws IOException {
-        InputStream bis = getClass().getResourceAsStream("/resources/icon.png");
+        InputStream bis = getClass().getResourceAsStream("/icon.png");
+        if (bis == null) {
+            throw new IOException("Resource not found: /icon.png");
+        }
         return ImageIO.read(bis);
     }
 }

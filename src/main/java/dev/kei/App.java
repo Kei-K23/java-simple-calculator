@@ -8,6 +8,11 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        try {
+            UI ui = new UI();
+            ui.init();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }
