@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class UI implements ActionListener {
     // initialization fields
@@ -20,8 +21,20 @@ public class UI implements ActionListener {
     private final Font font;
     private final Font textAreaFont;
     private ImageIcon imageIcon;
+    private BufferedImageCustom imageCustom;
+    private Calculator calculator;
 
+    // constructor
+    public UI() throws IOException {
+        frame = new JFrame("Calculator by Arkar Min");
 
+        panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+        imageCustom = new BufferedImageCustom();
+        imageIcon = new ImageIcon(imageCustom.imageReturn());
+
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
